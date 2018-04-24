@@ -1,0 +1,13 @@
+# all file
+*.*
+
+# tex file
+!*.tex 
+
+# pics
+!*.png
+!*.bmp
+!*.jpg
+
+# pdf
+!*.pdf
