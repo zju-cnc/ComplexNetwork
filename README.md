@@ -7,6 +7,5 @@ The course repository of the complex network.
 
   http://ddswhu.com/beamer-tutoriral/
   
-*  环境
-  
-    TeXlive2017 + TeXstudio
+* 环境
+  我用的是TeXlive2017 + TeXstudio，不过只要有需要的packages其他环境应该都行。
