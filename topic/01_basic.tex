@@ -1,0 +1,383 @@
+\section*{复杂网络基础}
+
+\begin{frame}
+	\centerline{\textbf{\Large{复杂网络基础}}} 
+	~\\
+	\centerline{\large{赵帅}}
+\end{frame}
+
+\subsection*{什么是复杂网络}
+
+	\begin{frame}
+		\frametitle{什么是复杂网络？}
+	
+		\begin{itemize}
+		\item 在网络理论的研究中，复杂网络是由数量巨大的节点和节点之间错综复杂的关系共同构成的网络结构。用数学的语言来说，就是一个有着足够复杂的拓扑结构特征的图。 \\ ~\\
+		\item 具有自组织、自相似、吸引子、小世界、无标度中部分或全部性质的网络称为复杂网络。
+		\end{itemize}
+	
+	\end{frame}
+
+
+
+	\begin{frame}
+	
+		\begin{figure}[htbp]
+			\centering
+			\begin{minipage}[t]{0.45\textwidth}
+				\centering
+				\includegraphics[height=3.5cm]{pic/01-social.png}
+				\caption{社交网络}
+			\end{minipage}
+			\begin{minipage}[t]{0.45\textwidth}
+				\centering
+				\includegraphics[height=3.5cm]{pic/01-internet.jpg}
+				\caption{Internet一部分的可视化}
+			\end{minipage}
+		\end{figure}
+	
+	\end{frame}
+
+
+\subsection*{网络的图表示}
+
+	\begin{frame}
+		\frametitle{网络的图表示}
+			
+		\begin{figure}[htbp]
+			\centering
+			%\flushleft
+			\includegraphics[width=0.6\textwidth, bb = 0 0 1116 249]{pic/01-sevenb.png}
+			\caption{七桥问题-Euler图}
+		\end{figure}
+
+		图论之父-Euler. \\
+		
+		~\\
+		一个具体网络可以抽象为一个由点集$V$和边集$E$组成的图$G=(V,E)$。节点数记为$N=|V|$，边数记为$M=|E|$。 一条边对应一对点。\\
+		无向网络、有向网络、加权网络、无权网络、重边、自环。
+	
+	\end{frame}
+
+
+\subsection*{三个指标}
+
+\begin{frame}
+
+	
+	\begin{itemize}
+		\item \textbf{平均路径长度}  \\
+				网络中两个节点$i$和$j$之间的距离$d_{ij}$定义为连接这两个节点的最短路径上的边数。
+				网络的直径$ D = \max\limits_{i,j}d_{ij}$ 。\\
+				网络的平均长度 $L = \frac{1}{2} \frac{1}{N(N+1)}\sum\limits_{i \ge j}d_{ij}$，也叫特征长度路径。\\
+		\item \textbf{聚类系数} \\
+				$k_i$个节点之间最多可能有$k_i (k_i - 1)/2$条边，实际存在的边数为$E_i$ 。$ \text{聚类系数} C_i = 2E_i / k_i (k_i - 1)$ 。\\
+				由其几何特点等价为 $C_i = \frac{\text{与点}i\text{相连的三角形的数量} }{\text{与点}i\text{相连的三元组的数量}}$。\\
+				整个网络的聚类系数$C$就是所有节点$i$的聚类系数$C_i$的平均值。
+	
+	\end{itemize}
+
+	\begin{figure}[htbp]
+		\centering
+		%\flushleft
+		\includegraphics[width=0.6\textwidth, bb = 0 0 1248 449]{pic/01-three.png}
+	\end{figure}
+
+	
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{三个指标}
+	\begin{itemize}
+		\item \textbf{度与度分布}\\
+				节点$i$的度定义为与该节点连接的其他节点的数目。出度(out-degree)、入度(in-degree)。\\
+				度越大从某种意义上意味着该节点越重要。 \\
+				所有节点$i$的度$k_i$的期望称为网络的(节点)平均度，记为$<k>$。网络中节点的度分布可用分布函数$P(k)$来描述。\\
+				~\\
+				\begin{itemize}
+					\item \textbf{无标度条件} \\
+					对概率分布函数$f(x)$，对任意常数$a$，存在常数$b$使$f(x)$满足“无标度条件”：$f(ax)=bf(x)$，那么一定有：$f(x)=f(1)x^{-\gamma}, \gamma = -f(1)/f^{\prime}(1)$。\\
+					~\\
+					幂律分布函数$P(k)\propto x^{-\gamma}$是唯一满足“无标度条件”的概率分布函数。
+				\end{itemize}
+			
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{三个指标}
+	\begin{figure}[htbp]
+		\centering
+		%\flushleft
+		\includegraphics[width=0.95\textwidth, bb = 0 0 1365 652]{pic/01-pandp.png}
+	\end{figure}
+	\begin{itemize}
+		\item 均匀网络：公路网等
+		\item 非均匀网络：航空网、Internet等
+	\end{itemize}
+	
+\end{frame}
+
+\subsection*{规则网络}
+
+	\begin{frame}
+	\frametitle{规则网络}
+	
+		\begin{itemize}
+		\item \textbf{全局耦合(coupled)网络}：任意两点均有边相连。平均路径长度$L_{gc}=1$(最小)，聚类系数$C_{gc}=1$(最大)。 \\ ~\\
+		\item \textbf{最近邻耦合网络}：每个节点只和周围的邻居节点相连。\\ 
+				具有周期边界条件的最近邻耦合网络，$N$个点围成一个环，每个节点与左右$K/2$个点相连，$K$是偶数。对较大的$K$值，聚类系数$C_{nc}=\frac{3(K-2)}{4(K-1)}\approx\frac{3}{4}$，平均路径长度$L_{nc}\approx \frac{N}{2K} \rightarrow \infty （(N \rightarrow \infty)$。 \\ ~\\
+		\item \textbf{星形耦合网络}：有一个中心点，其余$N-1$个点只与中心点相连。\\ 
+				聚类系数$C_{star}=\frac{N-1}{N} \rightarrow (N \rightarrow \infty)$，平均路径长度$L_{star}=2- \frac{2(N-1)}{N(N-1)} \rightarrow 2 (N \rightarrow \infty)$。
+		\end{itemize}
+
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}[htbp]
+			\centering
+			%\flushleft
+			\includegraphics[width=0.95\textwidth, bb = 0 0 1548 649]{pic/01-rgraph.png}
+		\end{figure}
+	\end{frame}
+	
+\subsection*{随机网络}
+
+	\begin{frame}
+		\frametitle{随机网络}
+		\begin{itemize}
+			\item \textbf{ER随机网络}(Erdős–Rényi model,1959) \\ 
+					$N$个点，以概率$p$在两个点之间连线而成的图。\\ ~\\
+					平均度$<k> = p(N-1) \approx pN$，二项分布$\rightarrow $泊松分布($N\rightarrow \infty$)。
+					平均路径长度为网络规模的对数增长函数，$L_{ER} \propto \ln N / \ln <k>$(小世界特性)。\\
+					聚类系数$C=p=<k>/N \ll 1$。 \\
+					与实际复杂网络模型相比存在明显缺陷。
+		\end{itemize}
+		
+		\begin{figure}[htbp]
+			\centering
+			%\flushleft
+			\includegraphics[width=0.7\textwidth, bb = 0 0 1186 400]{pic/01-ERgraph.png}
+		\end{figure}
+	\end{frame}
+
+\subsection*{小世界网络}
+
+	\begin{frame}
+		\frametitle{小世界网络}
+		\begin{itemize}
+			\item \textbf{小世界网络} \\ 
+			具有较短平均路径长度的同时，又具有较高的聚类系数的一类网络。
+		\end{itemize}
+
+		\begin{center}
+		\fbox{
+			\centering
+			\parbox[tc][72pt][t]{300pt}{
+				\textbf{WS小世界模型}(Watts \& Strogtz,1998) 
+			\begin{enumerate}[(1)]
+				\item 从规则图开始：上文所提到的最近邻耦合网络。环形，每个节点与左右相邻的$K/2$个节点相连。
+				\item 随机化重连：以概率$p$随机的重新连接网络中的每条边，即边的一个端点保持不变，另一个节点在网络中随机选取。
+			\end{enumerate}
+		}} 
+		\end{center}
+		~\\
+		$p=0$时，没有不同。$p$较小时，新的网络与原始网络局部属性差别不大，从而网络的聚类系数变化也不大，平均路径长度却下降很快。上文提到的小世界网络性质。
+		
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{小世界网络}
+	WS小世界模型构造算法中的随机化过程有可能破坏网络的连通性。\\
+	\begin{center}
+	\fbox{
+		\centering
+		\parbox[tc][72pt][t]{300pt}{
+			\textbf{NW小世界模型}(Newman \& Watts,2000) 
+			\begin{enumerate}[(1)]
+				\item 从规则图开始：上文所提到的最近邻耦合网络。环形，每个节点与左右相邻的$K/2$个节点相连。
+				\item 随机化加边：以概率$p$在在随机选取的一对节点之间加上一条边。任意两各节点之间至多有一条边，无自环。
+			\end{enumerate}
+	}}
+	\end{center}
+	~\\
+	小世界网络反映了朋友关系网络的一些特性，大部分人的朋友都是其邻居或单位同事，但也有一些人住得很远。
+	
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{小世界网络}
+	
+		\begin{figure}[htbp]
+		\centering
+		%\flushleft
+		\includegraphics[width=0.75\textwidth, bb = 0 0 1024 870]{pic/01-smallw.png}
+		\end{figure}
+	
+	\end{frame}
+
+
+	\begin{frame}
+		\frametitle{统计性质}
+	
+		\begin{itemize}
+			\item 聚类系数 \\
+				WS小世界网络：$C(p) = \frac{3(K-2)}{4(K-1)}(1-p)^3$ \\
+				NW小世界网络：$C(p) = \frac{3(K-2)}{4(K-1) + 4Kp(p+2)}$ 
+			\item 平均路径长度 \\
+				没有精确的显示表达式，但有一些近似表达式。大体上，$p、K$确定的情况下，$L(p) \propto \ln N$。
+			\item 度分布 \\
+				大体上，二项分布，极限情况下逼近泊松分布，是所有节点的度都大致相等的均匀网络。
+		\end{itemize}
+		~\\
+		有一些利用小波分析进行小世界网络分析的研究。
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{小世界网络}
+		\begin{itemize}
+			\item 六度分离理论 \\
+			世界上任何互不相识的两人，只需要很少的中间人就能够建立起联系。\\ 
+			\item Kevin Bacon游戏 \\ 
+			\item Erdős 数 
+		\end{itemize}
+	
+		\begin{figure}[htbp]
+			\centering
+			%\flushleft
+			\includegraphics[width=0.5\textwidth, bb = 0 0 682 487]{pic/01-kevin.png}
+		\end{figure}
+
+	\end{frame}
+
+\subsection*{无标度网络}
+
+	\begin{frame}
+		\frametitle{无标度网络}
+		ER随机图和WS小世界模型的度分布可近似用Poisson分布表示(均匀网络或指数网络)。\\ ~\\
+		许多复杂网络(Internet、新陈代谢网络)等的度分布具有幂律形式。这类网络节点的连接度没有明显的特征长度，故称为无标度网络。\\
+		~\\
+		为了解释幂律分布的产生机理，提出了BA模型。\\
+		两个重要特性：
+		\begin{itemize}
+			\item 增长 \\
+			网络规模不断扩大。\\ 
+			\item 优先连接 \\ 
+			新的节点趋向于与那些具有较高连接度的节点相连接，“马太效应”。
+		\end{itemize}
+
+
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{BA无标度网络}	
+		\begin{center}	
+			\fbox{
+				\centering
+				\parbox[tc][130pt][t]{270pt}{
+					\textbf{BA无标度模型构造算法}(Barabási \& Albert,2000) 
+					\begin{enumerate}[(1)]
+						\item 增长：从一个具有$m_0$个节点的网络开始，每次引入一个新的节点连接到$m$个已存在的节点上，$m\le m_0$。
+						\item 优先连接：一个新节点与一个已经存在的节点$i$相连接的概率$\prod_i$与节点$i$的度$k_i$、节点$j$的度$k_j$之间满足如下关系：
+						$$\prod_i = \frac{k_i}{\sum\limits_{j}k_j}$$
+					\end{enumerate}
+				}
+			}
+		\end{center}
+		\begin{figure}[htbp]
+			\centering
+			%\flushleft
+			\includegraphics[width=0.6\textwidth, bb = 0 0 987 365]{pic/01-BA.png}
+		\end{figure}
+		
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{BA无标度网络}
+		
+		\begin{itemize} \itemsep=2ex
+			\item 平均路径长度： $L \propto \frac{\log N}{\log \log N}$。具有小世界特性。 
+			\item 聚类系数：没有明显的聚类特征。
+			\item 度分布 ：大体满足幂律分布。
+		\end{itemize}
+		~\\
+		无标度网络的鲁棒性与脆弱性。\\ ~\\ 
+		BA无标度网络中，越老的节点具有越高的度。实际网络中并非如此，有些节点由于自身的特殊性质，更容易被新新加入的节点所连接。如个人的交友能力和科研论文的质量等等。\\
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{适应度模型}	
+		\begin{center}	
+		\fbox{
+			\centering
+			\parbox[tc][130pt][t]{300pt}{
+				\textbf{适应度模型构造算法}(Bianconi \& Barabási,2001) 
+				\begin{enumerate}[(1)]
+					\item 增长：从一个具有$m_0$个节点的网络开始，每次引入一个新的节点连接到$m$个已存在的节点上，$m\le m_0$。每个节点的适应度按概率分布$\rho(\eta)$选取。
+					\item 优先连接：一个新节点与一个已经存在的节点$i$相连接的概率$\prod_i$与节点$i$的度$k_i$、节点$j$的度$k_j$和适应度$\eta_i$之间满足如下关系：
+					$$\prod_i = \frac{\eta_i k_i}{\sum\limits_{j}\eta_i k_j}$$
+				\end{enumerate}
+		}}
+		\end{center}
+		
+		适应度模型中，假如年轻的节点具有较高的适应度，在后续演化过程中会获得更多的边。\\
+		适应度分布的性质不同，适应度模型会有不同的行为表现。
+	\end{frame}
+
+\subsection*{复杂网络的自相似性}
+
+	\begin{frame}
+		\frametitle{复杂网络的自相似性}
+			
+		局部在某种意义上与整体相似，就是自相似性。是分形的基本特征。	
+			
+		\begin{figure}[htbp]
+			\centering
+			%\flushleft
+			\includegraphics[width=0.6\textwidth, bb = 0 0 884 457]{pic/01-self.png}
+		\end{figure}
+		\textbf{盒计数法} ：用边长$l_B$的盒子来完全覆盖一个几何图形，需要的最少盒子数为$N_B(l_B)$。图形的维数近似计算公式为：
+		$d_B \approx - \frac{\ln N_B(l_B)}{ln(l_N)} (l_B \rightarrow 0)$。分割方式难以寻找。
+		
+	\end{frame}
+
+
+
+\subsection*{自组织与吸引子}
+
+	\begin{frame}
+		\frametitle{自组织与吸引子}
+		
+		\begin{itemize} \itemsep=2ex
+			\item \textbf{自组织} \\
+					是一系统内部组织化的过程，通常是一开放系统，在没有外部来源引导或管理之下会自行增加其复杂性。\\
+					自组织是从最初的无序系统中各部分之间的局部相互作用，产生某种全局有序或协调的形式的一种过程。这种过程是自发产生的，它不由任何中介或系统内部或外部的子系统所主导或控制。
+			\item \textbf{吸引子}
+					一个系统有朝某个稳态发展的趋势，这个稳态就叫做吸引子。吸引子分为平庸吸引子和奇异吸引子。\\
+					如钟摆系统有一个平庸吸引子，其使钟摆系统向停止晃动的稳态发展。\\
+					学术上并没有完善的定义，仅处于概念阶段。
+		\end{itemize}
+
+	\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+

@@ -1,5 +1,8 @@
-\documentclass{beamer}
+\documentclass[11pt]{beamer}
 \usepackage[UTF8, noindent]{ctex}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
 
 
 % some package
@@ -13,16 +16,22 @@
 
 \RequirePackage{bm}         % \mathbf{}
 \RequirePackage{color}      % the color of the font
-
+\usepackage{mathrsfs}
 \RequirePackage{enumerate}
 
-
+% theme
 \usetheme{Antibes}
 \usecolortheme{lily}
+\usefonttheme{serif}
+%\usefonttheme{professionalfonts}
 
+% the caption of thf figure
 \renewcommand{\figurename}{图}
 \setbeamertemplate{caption}[numbered]
 
+% font
+%\setCJKmainfont{SimSun}
+%\setmainfont{Consolas} 
 
 \title{复杂网络}
 \institute{计算机学院}
@@ -38,8 +47,12 @@
 	\end{frame}
 
 
-	\input{topic/part01.tex}
-	\input{topic/part02.tex}
+
+	\input{topic/01_basic.tex}	
+	\input{topic/02_bayesianNetwork.tex}
+	\input{topic/03_social_network.tex}
+	\input{topic/06_Markov_Random_Field.tex}
 	\input{topic/part18.tex}
+
 
 \end{document}
