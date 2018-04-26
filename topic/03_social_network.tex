@@ -327,3 +327,53 @@
 		\caption{BA模型}
 	\end{figure}
 \end{frame}
+\begin{frame}
+	\textbf{社区发现算法}
+	
+	社区发现：在图中发现n个社区，同一个社区内的连接紧密，而社区间的连接非常稀疏。
+\end{frame}
+
+\begin{frame}
+	\textbf{GN算法}
+	
+	边介数（betweenness）:网络中经过该边的最短路径占所有最短路径的比例。
+	\begin{itemize}
+		\item 计算网络中所有边的介数
+		\item 找到介数最高的边，并将它从网络中移除 
+		\item 重复以上步骤，直到每个节点就是一个社区为止
+	\end{itemize}
+	
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.8\textwidth]{pic/GN.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\textbf{Louvain算法}
+	
+	Louvain算法是基于模块度的算法，其优化目标就是最大化整个社区网络结构的模块度。
+	
+	模块度：物理含义是社区内节点的连边数与随机情况下节点的连边数之差，它可以衡量一个社区紧密程度的度量。
+	
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.8\textwidth]{pic/Louvain.png}
+	\end{figure}
+
+	\begin{itemize}
+		\item 不断遍历网络中的节点，尝试把单个节点加入能使模块度提升最大的社区，直到所有节点不再改变 
+		\item 将第一阶段形成的一个个小的社区并为一个节点，重新构造网络。（边的权重为两个节点内所有原始节点的边权重之和）
+		\item 重复以上两步
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\textbf{LPA算法}
+	
+	\begin{itemize}
+		\item 初始化每个节点，并赋予唯一标签 
+		\item 根据邻居节点最常见的标签更新每个节点的标签 
+		\item 最终收敛后标签一致的节点属于同一社区
+	\end{itemize}
+\end{frame}
