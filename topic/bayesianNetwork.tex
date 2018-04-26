@@ -88,6 +88,16 @@
 	(c)$P(a,b|c)=P(a,b,c)/P(c)$ \\ $\qquad\qquad\quad=P(a)P(c|a)P(b|c)/P(c)$ \\ $\qquad\qquad\quad=P(a,c)P(b|c)/P(c)$ \\ $\qquad\qquad\quad=P(a|c)P(b|c)$
 \end{frame}
 
+\subsection*{特点}
+\begin{frame}
+	\begin{itemize}
+		\item贝叶斯网络的训练比较复杂，是一个 NP-complete问题，也就是说，现阶段没有可以在多项式时间内完成的算法。但是对于某些应用，这个训练过程可以简化，并在计算上高效实现。
+		\item贝叶斯网络本身是一种不定性因果关联模型。它本身是将多元知识图解可视化的一种概率知识表达与推理模型，更为贴切地蕴含了网络节点变量之间的因果关系及条件相关关系。
+		\item贝叶斯网络具有强大的不确定性问题处理能力。贝叶斯网络用条件概率表达各个信息要素之间的相关关系，能在有限的、不完整的、不确定的信息条件下进行学习和推理。
+		\item贝叶斯网络能有效地进行多源信息表达与融合。贝叶斯网络可将故障诊断与维修决策相关的各种信息纳入网络结构中，按节点的方式统一进行处理，能有效地按信息的相关关系进行融合。
+	\end{itemize}
+\end{frame}
+
 \subsection*{应用实例}
 \begin{frame}
 \begin{figure}
