@@ -9,3 +9,6 @@ The course repository of the complex network.
   
 * 环境
   我用的是TeXlive2017 + TeXstudio，不过只要有需要的packages其他环境应该都行。
+
+
+* 大家可以先把pdf传上来，我最后release之后会删掉的。
