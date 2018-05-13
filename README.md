@@ -6,9 +6,10 @@ The course repository of the complex network.
   http://www.latexstudio.net/wp-content/uploads/2017/02/BeamerUserGuide_V3.24_zh-cn.pdf
 
   http://ddswhu.com/beamer-tutoriral/
-  
-* 环境
-  我用的是TeXlive2017 + TeXstudio，不过只要有需要的packages其他环境应该都行。
+
+* `main.tex`是作报告的ppt
+  
+* `/presonal_reports`下面是每个人的报告
 
 
-* 大家可以先把pdf传上来，我最后release之后会删掉的。
+
